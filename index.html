@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Digital Beacon Africa — Online trust and safety for every generation</title>
+<meta name="description" content="Digital Beacon Africa is a community building online trust and safety for every generation through workshops and research.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #191A23;
+    --lime: #B9FF66;
+    --paper: #FFFFFF;
+    --mist: #F3F3F3;
+    --bg: #F6FBEF;
+    --muted: #55565F;
+    --radius-lg: 32px;
+    --radius-md: 16px;
+    --sans: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+    --mono: "Space Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--bg);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  img, svg { max-width: 100%; display: block; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; border-radius: 6px; }
+  .wrap { width: min(1180px, 100% - 48px); margin-inline: auto; }
+
+  /* ---------- Buttons ---------- */
+  .btn {
+    display: inline-flex; align-items: center; gap: 10px;
+    font-family: var(--mono); font-size: 0.9rem;
+    padding: 14px 26px; border-radius: 12px;
+    text-decoration: none; border: 1px solid var(--ink);
+    transition: background .2s, color .2s;
+  }
+  .btn-dark { background: var(--ink); color: var(--paper); }
+  .btn-dark:hover { background: #2d2e38; }
+  .btn-outline { background: transparent; color: var(--ink); }
+  .btn-outline:hover { background: var(--ink); color: var(--paper); }
+
+  /* ---------- Header ---------- */
+  header { padding: 32px 0; position: relative; z-index: 10; }
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; font-size: 1.15rem; letter-spacing: -0.01em; }
+  .logo svg { width: 34px; height: 34px; }
+  .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; margin: 0; padding: 0; }
+  .nav-links a { font-family: var(--mono); font-size: 0.9rem; text-decoration: none; }
+  .nav-links a:not(.btn):hover { text-decoration: underline; text-underline-offset: 5px; }
+  .menu-toggle { display: none; background: none; border: 1px solid var(--ink); border-radius: 10px; padding: 10px; cursor: pointer; }
+  .menu-toggle span { display: block; width: 22px; height: 2px; background: var(--ink); margin: 4px 0; }
+
+  /* ---------- Hero ---------- */
+  .hero { display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; padding: 40px 0 104px; }
+  .hero h1 { font-size: clamp(2.4rem, 5vw, 3.7rem); line-height: 1.08; font-weight: 500; letter-spacing: -0.02em; margin: 0 0 24px; max-width: 14ch; }
+  .hero p { font-size: 1.15rem; color: var(--muted); max-width: 46ch; margin: 0 0 32px; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+  .waves path { animation: pulse 2.4s ease-in-out infinite; }
+  .waves path:nth-child(2) { animation-delay: .3s; }
+  .waves path:nth-child(3) { animation-delay: .6s; }
+  @keyframes pulse { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
+
+
+  /* ---------- Section heading ---------- */
+  .sec-head { display: flex; align-items: center; gap: 40px; margin-bottom: 48px; }
+  .sec-head h2 { margin: 0; font-size: 2.4rem; font-weight: 500; line-height: 1; background: var(--lime); padding: 2px 8px; border-radius: 7px; white-space: nowrap; }
+  .sec-head p { margin: 0; flex: 1; }
+
+  /* ---------- Initiative cards ---------- */
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-bottom: 104px; }
+  .card {
+    display: flex; flex-direction: column; gap: 28px;
+    padding: 40px 36px; border-radius: 40px; border: 1px solid var(--ink);
+    box-shadow: 0 6px 0 var(--ink); min-height: 100%;
+  }
+  .card-light { background: var(--paper); }
+  .card-dark { background: var(--ink); color: var(--paper); }
+  .card h3 { margin: 0 0 16px; font-size: 1.7rem; font-weight: 500; line-height: 1.25; }
+  .card h3 mark { background: var(--lime); color: var(--ink); padding: 0 7px; border-radius: 7px; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
+  .card-dark h3 mark { background: var(--paper); }
+  .card > div { display: flex; flex-direction: column; flex: 1; }
+  .card p { margin: 0 0 28px; flex: 1; }
+  .card-light p { color: var(--muted); }
+  .card-dark p { color: #cfd0d6; }
+  .card .more { display: inline-flex; align-items: center; gap: 14px; text-decoration: none; font-size: 1.05rem; }
+  .arrow-dot { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--ink); color: var(--lime); }
+  .card-dark .arrow-dot { background: var(--paper); color: var(--ink); }
+  .card svg.art { order: -1; width: 160px; height: 134px; }
+
+  /* ---------- Partner CTA ---------- */
+  .cta {
+    background: var(--paper); border: 1px solid var(--ink); border-radius: 44px; padding: 56px 60px;
+    display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 32px;
+    margin-bottom: 104px; position: relative; overflow: hidden;
+  }
+  .cta h2 { margin: 0 0 20px; font-size: 1.9rem; font-weight: 500; }
+  .cta p { margin: 0 0 28px; max-width: 48ch; }
+  .cta .email { display: block; font-family: var(--mono); font-size: 0.95rem; margin-top: 16px; color: var(--muted); }
+  .cta svg { justify-self: end; width: 280px; height: 220px; }
+
+  /* ---------- Updates band ---------- */
+  .band { background: var(--ink); color: var(--paper); border-radius: 44px; padding: 64px 60px; display: grid; grid-template-columns: repeat(3, 1fr); margin-bottom: 104px; }
+  .band > div { padding: 0 40px; }
+  .band > div:first-child { padding-left: 0; }
+  .band > div:last-child { padding-right: 0; }
+  .band > div + div { border-left: 1px solid rgba(255,255,255,.35); }
+  .band h3 { margin: 0 0 12px; font-size: 1.3rem; font-weight: 500; }
+  .band p { margin: 0 0 20px; color: #cfd0d6; }
+  .band a.link { color: var(--lime); text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+  .band a.link:hover { text-decoration: underline; text-underline-offset: 5px; }
+  .empty { border: 1px dashed rgba(255,255,255,.4); border-radius: var(--radius-md); padding: 16px 18px; margin-bottom: 20px; font-family: var(--mono); font-size: .85rem; color: #cfd0d6; }
+  .socials { list-style: none; padding: 0; margin: 0; display: grid; gap: 10px; }
+
+  /* ---------- Footer ---------- */
+  footer { background: var(--ink); color: var(--paper); border-radius: 44px 44px 0 0; padding: 56px 0 40px; }
+  .foot-top { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; padding-bottom: 40px; border-bottom: 1px solid rgba(255,255,255,.25); }
+  .foot-links { display: flex; gap: 28px; flex-wrap: wrap; list-style: none; margin: 0; padding: 0; }
+  .foot-links a { text-decoration: underline; text-underline-offset: 5px; font-family: var(--mono); font-size: .9rem; }
+  .foot-bottom { padding-top: 28px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; color: #cfd0d6; font-size: .95rem; }
+  .foot-bottom a { color: var(--lime); }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 900px) {
+    .menu-toggle { display: block; }
+    .nav-links {
+      position: absolute; top: 100%; left: 24px; right: 24px;
+      flex-direction: column; align-items: stretch; gap: 0;
+      background: var(--paper); border: 1px solid var(--ink); border-radius: var(--radius-md);
+      box-shadow: 0 6px 0 var(--ink); padding: 12px; display: none;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li a:not(.btn) { display: block; padding: 12px; }
+    .nav-links .btn { margin-top: 8px; justify-content: center; }
+    .hero { grid-template-columns: 1fr; padding-top: 16px; }
+    .hero svg { order: -1; max-width: 420px; margin-inline: auto; }
+    .cards { grid-template-columns: 1fr; }
+    .cta { grid-template-columns: 1fr; padding: 44px 32px; }
+    .cta svg { display: none; }
+    .band { grid-template-columns: 1fr; padding: 44px 32px; }
+    .band > div { padding: 28px 0 !important; }
+    .band > div + div { border-left: 0; border-top: 1px solid rgba(255,255,255,.35); }
+    .band > div:first-child { padding-top: 0 !important; }
+    .band > div:last-child { padding-bottom: 0 !important; }
+  }
+  @media (max-width: 600px) {
+    .sec-head { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .card { padding: 36px 28px; }
+    .card svg.art { width: 150px; height: 120px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .waves path { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap nav" aria-label="Main">
+    <a href="#" class="logo" aria-label="Digital Beacon Africa home">
+      <svg viewBox="0 0 34 34" aria-hidden="true">
+        <rect width="34" height="34" rx="9" fill="#191A23"/>
+        <g transform="rotate(-18 17 17)">
+          <rect x="12" y="19" width="3" height="6" rx="1" fill="#FFFFFF"/>
+          <rect x="6" y="14" width="5" height="6" fill="#FFFFFF"/>
+          <polygon points="11,14 21,9 21,25 11,20" fill="#B9FF66"/>
+          <ellipse cx="21" cy="17" rx="2.2" ry="8" fill="#FFFFFF"/>
+          <path d="M25 12.5 Q27.5 17 25 21.5" stroke="#B9FF66" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M28 10.5 Q31.5 17 28 23.5" stroke="#B9FF66" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".6"/>
+        </g>
+      </svg>
+      Digital Beacon Africa
+    </a>
+    <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about">About us</a></li>
+      <li><a href="#initiatives">Initiatives</a></li>
+      <li><a href="https://iamsabrina.hashnode.dev" target="_blank" rel="noopener">Blog</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#partner" class="btn btn-outline">Partner with us</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <!-- Hero / About -->
+  <section class="hero" id="about">
+    <div>
+      <h1>Building online trust and safety for every generation</h1>
+      <p>We are a community helping people across Africa stay safe online, from children taking their first steps on the internet to grandparents joining the family group chat.</p>
+      <div class="hero-actions">
+        <a href="#partner" class="btn btn-dark">Partner with us</a>
+        <a href="#initiatives" class="btn btn-outline">See our initiatives</a>
+      </div>
+    </div>
+
+    <svg viewBox="0 0 440 380" role="img" aria-label="Illustration of a megaphone sending out a message, surrounded by online safety icons">
+      <!-- ground ring -->
+      <ellipse cx="220" cy="318" rx="170" ry="26" fill="none" stroke="#191A23" stroke-width="1.2"/>
+      <ellipse cx="220" cy="322" rx="120" ry="16" fill="none" stroke="#191A23" stroke-width="1.2"/>
+      <g transform="translate(0 0) rotate(-18 240 190)">
+        <!-- sound waves -->
+        <g class="waves" fill="none" stroke="#191A23" stroke-width="3" stroke-linecap="round">
+          <path d="M332 140 Q356 190 332 240"/>
+          <path d="M352 120 Q386 190 352 260" opacity=".7"/>
+          <path d="M372 102 Q414 190 372 278" opacity=".4"/>
+        </g>
+        <!-- handle -->
+        <path d="M168 212 H194 L186 270 Q185 276 179 276 H172 Q166 276 166 270 Z" fill="#191A23"/>
+        <!-- back cap -->
+        <rect x="100" y="165" width="52" height="50" fill="#fff" stroke="#191A23" stroke-width="2.5"/>
+        <ellipse cx="100" cy="190" rx="9" ry="25" fill="#191A23"/>
+        <!-- cone -->
+        <polygon points="150,165 292,105 292,275 150,215" fill="#B9FF66" stroke="#191A23" stroke-width="2.5" stroke-linejoin="round"/>
+        <polygon points="202,143 232,130 232,250 202,237" fill="#fff" stroke="#191A23" stroke-width="2"/>
+        <!-- bell -->
+        <ellipse cx="292" cy="190" rx="24" ry="85" fill="#fff" stroke="#191A23" stroke-width="2.5"/>
+        <ellipse cx="296" cy="190" rx="12" ry="56" fill="#191A23"/>
+      </g>
+      <!-- floating icons -->
+      <g transform="translate(92 70)">
+        <circle r="24" fill="#191A23"/>
+        <path d="M0 -12 L10 -8 V1 C10 8 5 11 0 13 C-5 11 -10 8 -10 1 V-8 Z" fill="#fff"/>
+        <path d="M-4 1 L-1 4 L5 -3" stroke="#191A23" stroke-width="2" fill="none" stroke-linecap="round"/>
+      </g>
+      <g transform="translate(372 300)">
+        <circle r="21" fill="#B9FF66" stroke="#191A23" stroke-width="2"/>
+        <rect x="-8" y="-3" width="16" height="12" rx="2" fill="#191A23"/>
+        <path d="M-5 -3 V-7 a5 5 0 0 1 10 0 V-3" stroke="#191A23" stroke-width="2" fill="none"/>
+      </g>
+      <g transform="translate(58 262)">
+        <circle r="19" fill="#191A23"/>
+        <path d="M0 8 C-9 1 -10 -4 -7 -7 C-4 -10 -1 -8 0 -5 C1 -8 4 -10 7 -7 C10 -4 9 1 0 8 Z" fill="#fff"/>
+      </g>
+      <!-- sparkles -->
+      <path d="M250 22 Q250 42 270 42 Q250 42 250 62 Q250 42 230 42 Q250 42 250 22 Z" fill="#191A23"/>
+      <path d="M138 318 Q138 330 150 330 Q138 330 138 342 Q138 330 126 330 Q138 330 138 318 Z" fill="#B9FF66" stroke="#191A23" stroke-width="1.2"/>
+      <circle cx="170" cy="36" r="7" fill="#B9FF66" stroke="#191A23" stroke-width="1.5"/>
+      <circle cx="30" cy="160" r="5" fill="#191A23"/>
+    </svg>
+  </section>
+
+
+  <!-- Initiatives -->
+  <section id="initiatives">
+    <div class="sec-head">
+      <h2>Initiatives</h2>
+      <p>Our work turns online safety from a worry into a skill. We teach it in rooms full of people, and we study it so the lessons match real life.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card card-light">
+        <div>
+          <h3><mark>Workshops</mark></h3>
+          <p>Interactive, practical sessions that equip schools, families and communities to recognise online threats, protect their digital lives and build healthy habits online.</p>
+          <a href="#events" class="more"><span class="arrow-dot" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 13 L13 3 M5 3 H13 V11" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+          </span>Upcoming workshops</a>
+        </div>
+        <svg class="art" viewBox="0 0 180 150" aria-hidden="true">
+          <rect x="30" y="10" width="120" height="70" rx="6" fill="#fff" stroke="#191A23" stroke-width="2"/>
+          <path d="M80 28 L96 34 V46 C96 56 89 61 80 64 C71 61 64 56 64 46 V34 Z" fill="#B9FF66" stroke="#191A23" stroke-width="2"/>
+          <path d="M73 45 L78 50 L88 39" stroke="#191A23" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <line x1="104" y1="36" x2="136" y2="36" stroke="#191A23" stroke-width="2"/>
+          <line x1="104" y1="48" x2="128" y2="48" stroke="#191A23" stroke-width="2"/>
+          <circle cx="45" cy="106" r="10" fill="#191A23"/><path d="M28 140 a17 17 0 0 1 34 0" fill="#191A23"/>
+          <circle cx="90" cy="102" r="10" fill="#fff" stroke="#191A23" stroke-width="2"/><path d="M73 138 a17 17 0 0 1 34 0" fill="#fff" stroke="#191A23" stroke-width="2"/>
+          <circle cx="135" cy="106" r="10" fill="#B9FF66" stroke="#191A23" stroke-width="2"/><path d="M118 140 a17 17 0 0 1 34 0" fill="#B9FF66" stroke="#191A23" stroke-width="2"/>
+        </svg>
+      </article>
+
+      <article class="card card-dark">
+        <div>
+          <h3><mark>Research</mark></h3>
+          <p>We study how people across the continent experience online harm, and share what we find to shape better tools, teaching and policy.</p>
+          <a href="https://iamsabrina.hashnode.dev" target="_blank" rel="noopener" class="more"><span class="arrow-dot" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 13 L13 3 M5 3 H13 V11" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+          </span>Read our findings</a>
+        </div>
+        <svg class="art" viewBox="0 0 180 150" aria-hidden="true">
+          <line x1="14" y1="134" x2="166" y2="134" stroke="#fff" stroke-width="2"/>
+          <rect x="24" y="96" width="20" height="38" fill="none" stroke="#fff" stroke-width="2"/>
+          <rect x="54" y="72" width="20" height="62" fill="#fff"/>
+          <rect x="84" y="84" width="20" height="50" fill="none" stroke="#fff" stroke-width="2"/>
+          <circle cx="120" cy="50" r="30" fill="#191A23" stroke="#fff" stroke-width="3"/>
+          <circle cx="120" cy="50" r="20" fill="#B9FF66"/>
+          <path d="M110 55 L117 46 L123 52 L131 42" stroke="#191A23" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="141" y1="72" x2="164" y2="96" stroke="#fff" stroke-width="7" stroke-linecap="round"/>
+          <path d="M28 20 Q28 30 38 30 Q28 30 28 40 Q28 30 18 30 Q28 30 28 20 Z" fill="#B9FF66"/>
+        </svg>
+      </article>
+      <article class="card card-light">
+        <div>
+          <h3><mark>Safety content</mark></h3>
+          <p>Every week, we share clear, practical safety tips across our social channels, from spotting the latest scams to tightening privacy settings, so staying safe online becomes second nature.</p>
+          <a href="https://www.instagram.com/digitalbeaconafrica" target="_blank" rel="noopener" class="more"><span class="arrow-dot" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 16 16"><path d="M3 13 L13 3 M5 3 H13 V11" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+          </span>See this week's tips</a>
+        </div>
+        <svg class="art" viewBox="0 0 180 150" aria-hidden="true">
+          <rect x="52" y="6" width="76" height="138" rx="12" fill="#fff" stroke="#191A23" stroke-width="2.5"/>
+          <line x1="80" y1="16" x2="100" y2="16" stroke="#191A23" stroke-width="3" stroke-linecap="round"/>
+          <rect x="62" y="28" width="56" height="56" rx="6" fill="#B9FF66" stroke="#191A23" stroke-width="2"/>
+          <path d="M90 40 L102 45 V55 C102 64 96 68 90 71 C84 68 78 64 78 55 V45 Z" fill="#fff" stroke="#191A23" stroke-width="2"/>
+          <path d="M85 56 L89 60 L96 52" stroke="#191A23" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M70 100 C64 96 63 92 65 90 C67 88 69 89 70 91 C71 89 73 88 75 90 C77 92 76 96 70 100 Z" fill="#191A23"/>
+          <path d="M84 91 h12 v7 h-7 l-4 3 v-3 h-1 z" fill="none" stroke="#191A23" stroke-width="1.8" stroke-linejoin="round"/>
+          <line x1="64" y1="114" x2="112" y2="114" stroke="#191A23" stroke-width="2"/>
+          <line x1="64" y1="124" x2="98" y2="124" stroke="#191A23" stroke-width="2"/>
+          <g transform="translate(146 42)">
+            <rect x="-20" y="-18" width="40" height="38" rx="6" fill="#191A23"/>
+            <rect x="-20" y="-18" width="40" height="11" rx="6" fill="#B9FF66" stroke="#191A23" stroke-width="2"/>
+            <text x="0" y="13" text-anchor="middle" font-family="Space Mono, monospace" font-size="15" fill="#fff">7</text>
+          </g>
+          <path d="M28 96 Q28 110 42 110 Q28 110 28 124 Q28 110 14 110 Q28 110 28 96 Z" fill="#191A23"/>
+          <circle cx="30" cy="40" r="6" fill="#B9FF66" stroke="#191A23" stroke-width="1.5"/>
+        </svg>
+      </article>
+    </div>
+  </section>
+
+  <!-- Partner with us -->
+  <section class="cta" id="partner">
+    <div>
+      <h2>Partner with us</h2>
+      <p>Schools, companies, NGOs and funders: we'd love to work with you on workshops, research or events that make the internet safer for the people you serve.</p>
+      <a href="mailto:hello@digitalbeaconafrica.org" class="btn btn-dark">Email us</a>
+      <span class="email">hello@digitalbeaconafrica.org</span>
+    </div>
+    <svg viewBox="0 0 280 220" aria-hidden="true">
+      <ellipse cx="140" cy="120" rx="118" ry="30" fill="none" stroke="#191A23" stroke-width="1.2" transform="rotate(-6 140 120)"/>
+      <ellipse cx="140" cy="126" rx="100" ry="22" fill="none" stroke="#191A23" stroke-width="1.2" transform="rotate(5 140 126)"/>
+      <rect x="82" y="70" width="116" height="80" rx="8" fill="#191A23"/>
+      <path d="M86 76 L140 118 L194 76" stroke="#B9FF66" stroke-width="3" fill="none" stroke-linejoin="round"/>
+      <path d="M232 30 Q232 58 260 58 Q232 58 232 86 Q232 58 204 58 Q232 58 232 30 Z" fill="#fff" stroke="#191A23" stroke-width="1.5" opacity=".8"/>
+      <path d="M66 150 Q66 176 92 176 Q66 176 66 202 Q66 176 40 176 Q66 176 66 150 Z" fill="#B9FF66"/>
+    </svg>
+  </section>
+
+  <!-- Blog / Events / Socials -->
+  <section class="band" id="events" aria-label="Updates">
+    <div>
+      <h3>From the blog</h3>
+      <p>Guides, stories and research notes on staying safe and building trust online.</p>
+      <a href="https://iamsabrina.hashnode.dev" target="_blank" rel="noopener" class="link">Read the blog
+        <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 L13 3 M5 3 H13 V11" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+      </a>
+    </div>
+    <div>
+      <h3>Events</h3>
+      <div class="empty">No upcoming events</div>
+      <p>New workshops and meetups are announced on our socials first.</p>
+      <ul class="socials">
+        <li><a href="https://www.instagram.com/digitalbeaconafrica" target="_blank" rel="noopener" class="link">Get notified on Instagram
+          <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 L13 3 M5 3 H13 V11" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+        </a></li>
+        <li><a href="https://www.linkedin.com/company/digitalbeaconafrica" target="_blank" rel="noopener" class="link">Get notified on LinkedIn
+          <svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 13 L13 3 M5 3 H13 V11" stroke="currentColor" stroke-width="2" fill="none"/></svg>
+        </a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Stay connected</h3>
+      <p>Follow the community and join the conversation.</p>
+      <ul class="socials">
+        <li><a href="https://www.instagram.com/digitalbeaconafrica" target="_blank" rel="noopener" class="link">Instagram · @digitalbeaconafrica</a></li>
+        <li><a href="https://www.linkedin.com/company/digitalbeaconafrica" target="_blank" rel="noopener" class="link">LinkedIn · digitalbeaconafrica</a></li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <a href="#" class="logo" aria-label="Digital Beacon Africa home">
+        <svg viewBox="0 0 34 34" aria-hidden="true">
+        <rect width="34" height="34" rx="9" fill="#FFFFFF"/>
+        <g transform="rotate(-18 17 17)">
+          <rect x="12" y="19" width="3" height="6" rx="1" fill="#191A23"/>
+          <rect x="6" y="14" width="5" height="6" fill="#191A23"/>
+          <polygon points="11,14 21,9 21,25 11,20" fill="#B9FF66"/>
+          <ellipse cx="21" cy="17" rx="2.2" ry="8" fill="#191A23"/>
+          <path d="M25 12.5 Q27.5 17 25 21.5" stroke="#B9FF66" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+          <path d="M28 10.5 Q31.5 17 28 23.5" stroke="#B9FF66" stroke-width="1.8" fill="none" stroke-linecap="round" opacity=".6"/>
+        </g>
+      </svg>
+        Digital Beacon Africa
+      </a>
+      <ul class="foot-links">
+        <li><a href="#about">About us</a></li>
+        <li><a href="#initiatives">Initiatives</a></li>
+        <li><a href="https://iamsabrina.hashnode.dev" target="_blank" rel="noopener">Blog</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#partner">Partner with us</a></li>
+      </ul>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year">2026</span> Digital Beacon Africa</span>
+      <a href="mailto:hello@digitalbeaconafrica.org">hello@digitalbeaconafrica.org</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const toggle = document.querySelector('.menu-toggle');
+  const links = document.getElementById('nav-links');
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    links.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+  }));
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
